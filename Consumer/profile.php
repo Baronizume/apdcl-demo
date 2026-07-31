@@ -64,758 +64,628 @@ if(!empty($user['photo']) && file_exists("../uploads/".$user['photo'])){
 
 ?>
 
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
-
 <meta charset="UTF-8">
 
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-<title>
-APDCL Consumer Profile
-</title>
-
-
-
-<!-- Bootstrap -->
+<title>APDCL Consumer Profile</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-<!-- Icons -->
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-html,body{
-    width:100%;
-    background:#eef5fc;
-    overflow-x:hidden;
+body{
+background:#eef4fb;
+overflow-x:hidden;
 }
 
-
-/* ================= HEADER ================= */
-
-.top-header{
-
-    width:100vw;
-    margin-left:calc(50% - 50vw);
-
-    height:110px;
-
-    background:linear-gradient(
-        90deg,
-        #002b5c,
-        #005bac
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:15px 45px;
-
-    color:white;
+.layout{
+display:flex;
+min-height:100vh;
 }
 
+/* ================= Sidebar ================= */
 
-.brand{
-    display:flex;
-    align-items:center;
-}
+.sidebar{
 
+width:270px;
 
-.brand img{
+background:linear-gradient(180deg,#0B2C74,#1565d8);
 
-    width:75px;
-    height:75px;
+color:#fff;
 
-    border-radius:50%;
-    background:white;
+position:fixed;
 
-    padding:5px;
-    margin-right:15px;
-}
+left:0;
 
+top:0;
 
-.brand h2{
+bottom:0;
 
-    font-size:30px;
-    font-weight:800;
-}
+padding:25px 20px;
 
+display:flex;
 
-.brand small{
-    font-size:13px;
-}
+flex-direction:column;
 
+box-shadow:5px 0 20px rgba(0,0,0,.15);
 
-/* ELECTRICITY */
-
-.electricity-brand{
-
-    display:flex;
-    align-items:center;
-    gap:15px;
+z-index:1000;
 
 }
 
+.logo{
 
-.power-circle{
+text-align:center;
 
-    width:65px;
-    height:65px;
-
-    border-radius:50%;
-    border:4px solid #ffc107;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+margin-bottom:35px;
 
 }
 
+.logo img{
 
-.power-circle i{
+width:80px;
 
-    color:#ffc107;
-    font-size:38px;
+height:80px;
 
-}
+background:#fff;
 
+border-radius:50%;
 
+padding:6px;
 
-/* USER */
-
-.user-area{
-
-    display:flex;
-    align-items:center;
+margin-bottom:10px;
 
 }
 
+.logo h3{
 
-.user-area img{
+font-weight:700;
 
-    width:60px;
-    height:60px;
-
-    border-radius:50%;
-
-    border:3px solid white;
-
-    object-fit:cover;
+margin-bottom:3px;
 
 }
 
+.logo small{
 
-.logout-btn{
-
-    margin-left:20px;
-
-    background:#dc3545;
-
-    color:white;
-
-    padding:10px 20px;
-
-    border-radius:8px;
-
-    text-decoration:none;
+color:#dbe8ff;
 
 }
 
+.menu{
 
+list-style:none;
 
-/* ================= NAVBAR ================= */
+padding:0;
 
+margin:0;
 
-.profile-nav{
-
-    width:100vw;
-
-    margin-left:calc(50% - 50vw);
-
-    height:60px;
-
-    background:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:40px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
+flex:1;
 
 }
 
+.menu li{
 
-.profile-nav a{
-
-    text-decoration:none;
-
-    color:#003366;
-
-    font-weight:600;
+margin-bottom:8px;
 
 }
 
+.menu a{
 
+display:flex;
 
-/* ================= BANNER ================= */
+align-items:center;
 
+gap:15px;
 
-.profile-banner{
+padding:14px 18px;
 
-    width:100vw;
+border-radius:12px;
 
-    margin-left:calc(50% - 50vw);
+color:#fff;
 
-    height:150px;
+text-decoration:none;
 
+transition:.3s;
 
-    background:
-
-    linear-gradient(
-    90deg,
-    rgba(235,245,255,.95),
-    rgba(255,255,255,.5)
-    ),
-
-    url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e");
-
-
-    background-size:cover;
-
-    background-position:center;
-
-    display:flex;
-
-    align-items:center;
+font-weight:500;
 
 }
 
+.menu a:hover{
 
-.banner-content{
+background:rgba(255,255,255,.15);
 
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
-
-    padding-left:50px;
+transform:translateX(5px);
 
 }
 
+.menu .active a{
 
+background:#fff;
 
-.profile-icon{
+color:#0B2C74;
 
-    width:75px;
-    height:75px;
-
-    border-radius:50%;
-
-    background:#315dcc;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
+font-weight:600;
 
 }
 
+.menu i{
 
-.profile-icon i{
-
-    color:white;
-    font-size:40px;
+font-size:20px;
 
 }
 
+/* Customer Care */
 
+.support{
 
-/* ================= CONTENT ================= */
+background:rgba(255,255,255,.15);
 
+border-radius:18px;
 
-.page-wrapper{
+padding:20px;
 
-    width:100vw;
+text-align:center;
 
-    margin-left:calc(50% - 50vw);
-
-    padding:30px 45px;
-
-}
-
-
-.container-fluid{
-
-    width:100%;
-
-    padding:0!important;
+margin-top:25px;
 
 }
 
+.support i{
 
+font-size:38px;
 
-.profile-card{
-
-    background:white;
-
-    width:100%;
-
-    padding:25px;
-
-    border-radius:20px;
-
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
+margin-bottom:10px;
 
 }
 
+.support h2{
 
+font-size:30px;
 
-/* PROFILE */
+font-weight:700;
 
-
-.profile-image{
-
-    width:140px;
-
-    height:140px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:5px solid #dcecff;
+margin:10px 0;
 
 }
 
+/* ================= Content ================= */
 
-.profile-info{
+.content{
 
-    display:flex;
+margin-left:270px;
 
-    align-items:center;
+width:calc(100% - 270px);
 
-    gap:15px;
-
-    margin:20px 0;
-
-}
-
-
-
-.profile-info i{
-
-    width:55px;
-
-    height:55px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#eaf2ff;
-
-    color:#315dcc;
-
-    border-radius:12px;
-
-    font-size:25px;
+padding:30px;
 
 }
 
+/* ================= Header ================= */
 
+.topbar{
 
-.card-heading{
+background:#fff;
 
-    color:#005bac;
+padding:18px 30px;
 
-    font-size:24px;
+border-radius:20px;
 
-    font-weight:800;
+display:flex;
 
-    border-bottom:2px solid #d5e5ff;
+justify-content:space-between;
 
-    padding-bottom:12px;
+align-items:center;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+margin-bottom:30px;
 
 }
 
+.topbar h3{
 
+font-weight:700;
+
+color:#0B2C74;
+
+}
+
+.top-right{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+}
+
+.top-right i{
+
+font-size:22px;
+
+cursor:pointer;
+
+color:#0B2C74;
+
+}
+
+.top-right img{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #1565d8;
+
+}
+
+.top-right b{
+
+display:block;
+
+font-size:15px;
+
+}
+
+.top-right small{
+
+color:#777;
+
+}
+
+/* ================= Cards ================= */
+
+.card-box{
+
+background:#fff;
+
+border-radius:22px;
+
+padding:30px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+margin-bottom:25px;
+
+}
+
+.section-title{
+
+font-size:22px;
+
+font-weight:700;
+
+color:#0B2C74;
+
+margin-bottom:25px;
+
+padding-bottom:10px;
+
+border-bottom:2px solid #eef3ff;
+
+}
 
 .form-control{
 
-    border-radius:10px;
+border-radius:12px;
 
-    padding:12px;
-
-}
-
-
-
-/* PASSWORD */
-
-.password-btn{
-
-    background:#003366;
-
-    color:white;
-
-    padding:10px 25px;
-
-    border-radius:8px;
+padding:12px;
 
 }
 
+.btn-primary{
 
+border-radius:12px;
 
-.password-note{
+padding:12px 30px;
 
-    background:#e7f1ff;
+background:#1565d8;
 
-    padding:12px;
-
-    border-radius:8px;
-
-}
-
-
-
-/* ==========================
-   APDCL DASHBOARD FOOTER
-========================== */
-
-
-.apdcl-footer{
-
-    width:100%;
-
-    background:linear-gradient(
-        90deg,
-        #0B2C74,
-        #1565d8
-    );
-
-    color:white;
-
-    margin-top:50px;
-
-    padding:50px 40px 20px;
+border:none;
 
 }
 
+.btn-primary:hover{
 
-
-/* Footer container */
-
-.footer-container{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:space-around;
-
-    align-items:flex-start;
-
-    gap:40px;
+background:#0B2C74;
 
 }
 
-
-
-/* Footer sections */
-
-.footer-section{
-
-    flex:1;
-
-    text-align:center;
-
-    color:white;
-
-}
-
-
-
-/* Logo */
-
-.footer-section img{
-
-    width:70px;
-
-    height:70px;
-
-    background:white;
-
-    padding:5px;
-
-    border-radius:50%;
-
-    margin-bottom:10px;
-
-}
-
-
-
-.footer-section h4{
-
-    font-size:24px;
-
-    font-weight:800;
-
-    margin-bottom:8px;
-
-}
-
-
-
-.footer-section h5{
-
-    font-size:18px;
-
-    font-weight:700;
-
-    margin-bottom:15px;
-
-}
-
-
-
-.footer-section p{
-
-    margin:6px 0;
-
-    font-size:14px;
-
-    color:#e5efff;
-
-}
-
-
-
-/* Quick links */
-
-.footer-section a{
-
-    display:block;
-
-    color:#e5efff;
-
-    text-decoration:none;
-
-    margin:8px 0;
-
-    font-size:14px;
-
-}
-
-
-
-.footer-section a:hover{
-
-    color:#ffc107;
-
-}
-
-
-
-/* Icons */
-
-.footer-section i{
-
-    color:#ffc107;
-
-    margin-right:6px;
-
-}
-
-
-
-/* Social icons */
-
-.social-icons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:15px;
-
-}
-
-
-
-.social-icons a{
-
-    width:40px;
-
-    height:40px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.15);
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-
-
-.social-icons i{
-
-    color:white;
-
-    margin:0;
-
-    font-size:20px;
-
-}
-
-
-
-/* Bottom */
-
-.footer-bottom{
-
-    border-top:1px solid rgba(255,255,255,.3);
-
-    margin-top:30px;
-
-    padding-top:15px;
-
-    text-align:center;
-
-    font-size:14px;
-
-    color:#e5efff;
-
-}
-
-
-
-/* Mobile */
+/* ================= Responsive ================= */
 
 @media(max-width:992px){
 
+.sidebar{
 
-.footer-container{
-
-    flex-direction:column;
-
-    align-items:center;
+left:-270px;
 
 }
 
+.content{
 
-.footer-section{
+margin-left:0;
 
-    width:100%;
+width:100%;
+
+padding:20px;
+
+}
+
+.topbar{
+
+flex-direction:column;
+
+gap:15px;
 
 }
 
 }
 
+/* ================= Profile Hero ================= */
 
-/* MOBILE */
+.profile-photo{
 
-@media(max-width:992px){
+width:180px;
 
-.top-header{
+height:180px;
 
-    flex-direction:column;
+border-radius:50%;
 
-    height:auto;
+object-fit:cover;
 
-    gap:20px;
+border:6px solid #dcecff;
 
-}
-
-
-.profile-nav{
-
-    overflow-x:auto;
+box-shadow:0 8px 25px rgba(0,0,0,.15);
 
 }
 
+.info-box{
 
-.apdcl-footer{
+display:flex;
 
-    flex-direction:column;
+align-items:center;
 
-}
+gap:15px;
 
+padding:15px;
 
-}
+background:#f8fbff;
 
-.profile-container{
+border-radius:15px;
 
-    width:100vw;
-
-    margin-left:calc(50% - 50vw);
-
-    padding:30px 45px;
+transition:.3s;
 
 }
 
+.info-box:hover{
 
-.profile-container .row{
+transform:translateY(-5px);
 
-    width:100%;
-
-    margin:0;
-
-}
-
-
-.profile-container .profile-card{
-
-    width:100%;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 
 }
 
+.info-box i{
 
+font-size:28px;
 
-.apdcl-footer{
+color:#1565d8;
 
-    width:120%;
+width:55px;
 
-    margin-left:calc(50% - 50vw);
+height:55px;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+align-items:center;
 
-    align-items:center;
+justify-content:center;
+
+background:#e8f2ff;
+
+border-radius:50%;
+
+}
+
+.info-box h6{
+
+margin:0;
+
+font-weight:600;
+
+}
+
+.info-box small{
+
+color:#777;
+
+}
+
+.form-label{
+
+font-weight:600;
+
+color:#0B2C74;
+
+margin-bottom:8px;
+
+}
+
+.form-control{
+
+height:50px;
+
+border:1px solid #d8e5ff;
+
+transition:.3s;
+
+}
+
+textarea.form-control{
+
+height:auto;
+
+resize:none;
+
+}
+
+.form-control:focus{
+
+border-color:#1565d8;
+
+box-shadow:0 0 0 .2rem rgba(21,101,216,.15);
+
+}
+
+.btn-lg{
+
+padding:12px 35px;
+
+border-radius:12px;
+
+font-weight:600;
+
+}
+
+/* ================= Electricity Cards ================= */
+
+.detail-card{
+
+background:linear-gradient(135deg,#ffffff,#f4f8ff);
+
+border-radius:18px;
+
+padding:25px;
+
+text-align:center;
+
+transition:.35s;
+
+border:1px solid #dce8ff;
+
+height:100%;
+
+}
+
+.detail-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 30px rgba(0,0,0,.12);
+
+border-color:#1565d8;
+
+}
+
+.detail-card i{
+
+font-size:42px;
+
+color:#1565d8;
+
+margin-bottom:15px;
+
+display:block;
+
+}
+
+.detail-card small{
+
+display:block;
+
+color:#777;
+
+font-size:14px;
+
+margin-bottom:8px;
+
+}
+
+.detail-card h5{
+
+font-weight:700;
+
+color:#0B2C74;
+
+margin:0;
+
+word-break:break-word;
+
+}
+
+.dark{
+
+background:#111827;
+
+}
+
+.dark .card-box{
+
+background:#1f2937;
+
+color:white;
+
+}
+
+.dark .topbar{
+
+background:#1f2937;
+
+color:white;
+
+}
+
+.dark .form-control{
+
+background:#374151;
+
+border-color:#4b5563;
+
+color:white;
+
+}
+
+.dark .detail-card{
+
+background:#2d3748;
+
+color:white;
+
+}
+
+.dark .info-box{
+
+background:#2d3748;
+
+color:white;
 
 }
 
@@ -825,925 +695,581 @@ html,body{
 
 <body>
 
-<!-- ==========================
-     HEADER
-========================== -->
+<div class="layout">
 
+    <!-- Sidebar -->
 
-<div class="top-header">
+    <aside class="sidebar">
 
+        <!-- Logo -->
 
+        <div class="logo">
 
-<!-- APDCL BRAND -->
+            <img src="../assets/images/logo-circle.png">
 
+            <h3>APDCL</h3>
 
-<div class="brand">
+            <small>Consumer Portal</small>
 
+        </div>
 
-<img src="../assets/images/logo-circle.png">
+        <!-- Menu -->
 
+        <ul class="menu">
 
-<div>
+            <li>
+                <a href="dashboard.php">
+                    <i class="bi bi-grid"></i>
+                    Dashboard
+                </a>
+            </li>
 
+            <li>
+                <a href="bill.php">
+                    <i class="bi bi-receipt"></i>
+                    My Bills
+                </a>
+            </li>
 
-<h2>
-APDCL
-</h2>
+            <li>
+                <a href="payment_history.php">
+                    <i class="bi bi-credit-card"></i>
+                    Payment History
+                </a>
+            </li>
 
+            <li>
+                <a href="complaint.php">
+                    <i class="bi bi-tools"></i>
+                    Complaints
+                </a>
+            </li>
 
-<small>
-Assam Power Distribution Company Limited
-</small>
+            <li>
+                <a href="track_complaint.php">
+                    <i class="bi bi-geo-alt"></i>
+                    Track Complaint
+                </a>
+            </li>
 
+            <li>
+                <a href="outage_map.php">
+                    <i class="bi bi-lightning-charge"></i>
+                    Outage Map
+                </a>
+            </li>
+
+            <li>
+                <a href="notice_board.php">
+                    <i class="bi bi-megaphone"></i>
+                    Notice Board
+                </a>
+            </li>
+
+            <li class="active">
+
+                <a href="profile.php">
+
+                    <i class="bi bi-person-circle"></i>
+
+                    Profile
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="logout.php">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <!-- Customer Care -->
+
+        <div class="support">
+
+            <i class="bi bi-headset"></i>
+
+            <h5>Customer Care</h5>
+
+            <h2>1912</h2>
+
+            <small>24×7 Power Support</small>
+
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="content">
+
+        <!-- Top Header -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h3>My Profile</h3>
+
+            </div>
+
+            <div class="top-right">
+
+                <i class="bi bi-bell"></i>
+
+                <i class="bi bi-moon"></i>
+
+                <img src="<?= $profilePhoto ?>">
+
+                <div>
+
+                    <b><?= htmlspecialchars($user['name']); ?></b>
+
+                    <small>Consumer</small>
+
+                </div>
+
+            </div>
+
+        </header>
+<!-- ================= PROFILE HERO ================= -->
+
+<div class="card-box">
+
+    <div class="row align-items-center">
+
+        <!-- Profile Photo -->
+
+        <div class="col-lg-3 text-center">
+
+            <img src="<?= $profilePhoto ?>"
+                 class="profile-photo">
+
+        </div>
+
+        <!-- Consumer Details -->
+
+        <div class="col-lg-6">
+
+            <span class="badge bg-success mb-3 px-3 py-2">
+                Active Consumer
+            </span>
+
+            <h2 class="fw-bold text-primary">
+                <?= htmlspecialchars($user['name']); ?>
+            </h2>
+
+            <p class="text-muted mb-4">
+                Consumer No :
+                <strong><?= $consumer_no ?></strong>
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box">
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                        <div>
+
+                            <small>Email</small>
+
+                            <h6><?= htmlspecialchars($user['email']); ?></h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <div class="info-box">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        <div>
+
+                            <small>Mobile</small>
+
+                            <h6><?= htmlspecialchars($user['mobile']); ?></h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="col-lg-3 text-end">
+
+            <button class="btn btn-primary">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Edit Profile
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ================= PERSONAL INFORMATION ================= -->
+
+<div class="card-box">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h4 class="section-title mb-0">
+            <i class="bi bi-person-lines-fill"></i>
+            Personal Information
+        </h4>
+
+        <span class="badge bg-primary px-3 py-2">
+            Consumer Account
+        </span>
+
+    </div>
+
+    <form action="" method="POST">
+
+        <div class="row">
+
+            <div class="col-md-6 mb-4">
+
+                <label class="form-label fw-semibold">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    value="<?= htmlspecialchars($user['name']); ?>">
+
+            </div>
+
+            <div class="col-md-6 mb-4">
+
+                <label class="form-label fw-semibold">
+                    Consumer Number
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    value="<?= $user['consumer_no']; ?>"
+                    readonly>
+
+            </div>
+
+            <div class="col-md-6 mb-4">
+
+                <label class="form-label fw-semibold">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    value="<?= htmlspecialchars($user['email']); ?>">
+
+            </div>
+
+            <div class="col-md-6 mb-4">
+
+                <label class="form-label fw-semibold">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="mobile"
+                    value="<?= htmlspecialchars($user['mobile']); ?>">
+
+            </div>
+
+            <div class="col-12">
+
+                <label class="form-label fw-semibold">
+                    Address
+                </label>
+
+                <textarea
+                    class="form-control"
+                    rows="4"
+                    name="address"><?= htmlspecialchars($user['address']); ?></textarea>
+
+            </div>
+
+        </div>
+
+        <div class="text-end mt-4">
+
+            <button class="btn btn-primary btn-lg">
+
+                <i class="bi bi-save"></i>
+
+                Update Profile
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+<!-- ================= ELECTRICITY DETAILS ================= -->
+
+<div class="card-box">
+
+    <h4 class="section-title">
+        <i class="bi bi-lightning-charge-fill"></i>
+        Electricity Connection Details
+    </h4>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-speedometer2"></i>
+                <small>Meter Number</small>
+                <h5><?= $user['meter_no'] ?? 'N/A'; ?></h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-house-fill"></i>
+                <small>Category</small>
+                <h5><?= $user['category'] ?? 'Domestic'; ?></h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-geo-fill"></i>
+                <small>Zone</small>
+                <h5><?= $user['zone'] ?? 'N/A'; ?></h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-diagram-3-fill"></i>
+                <small>Circle</small>
+                <h5><?= $user['circle'] ?? 'N/A'; ?></h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-building-fill"></i>
+                <small>Sub Division</small>
+                <h5><?= $user['sub_division'] ?? 'N/A'; ?></h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="detail-card">
+                <i class="bi bi-lightning-fill"></i>
+                <small>DTR Number</small>
+                <h5><?= $user['dtr_no'] ?? 'N/A'; ?></h5>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- ================= CHANGE PASSWORD ================= -->
+
+<div class="card-box">
+
+    <h4 class="section-title">
+        <i class="bi bi-shield-lock-fill"></i>
+        Change Password
+    </h4>
+
+    <form>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">Current Password</label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Current Password">
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">New Password</label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-key-fill"></i>
+                    </span>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="New Password">
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <label class="form-label">Confirm Password</label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-check-circle-fill"></i>
+                    </span>
+
+                    <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Confirm Password">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="alert alert-info mt-3">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Use at least 8 characters including uppercase, lowercase,
+            numbers and symbols.
+
+        </div>
+
+        <div class="text-end">
+
+            <button class="btn btn-primary">
+
+                <i class="bi bi-shield-check"></i>
+
+                Change Password
+
+            </button>
+
+        </div>
+
+    </form>
 
 </div>
 
+<footer class="mt-5">
 
-</div>
+<div class="card-box">
 
+<div class="row">
 
+<div class="col-lg-4">
 
+<img src="../assets/images/logo-circle.png"
+style="width:70px">
 
-<!-- ELECTRICITY BRAND -->
-
-
-<div class="electricity-brand">
-
-
-<div class="power-circle">
-
-
-<i class="bi bi-lightning-charge-fill"></i>
-
-
-</div>
-
-
-
-<div>
-
-
-<h4>
-ELECTRICITY
-</h4>
-
-
-<small>
-Safe • Reliable • Sustainable
-</small>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-<!-- USER -->
-
-
-<div class="user-area">
-
-
-<img src="<?= $profilePhoto ?>">
-
-
-
-<div>
-
-
-<b>
-<?= htmlspecialchars($user['name']); ?>
-</b>
-
-
-<br>
-
-
-<small>
-
-Consumer No:
-<?= $consumer_no ?>
-
-</small>
-
-
-</div>
-
-
-
-<a href="logout.php"
-class="logout-btn">
-
-
-<i class="bi bi-box-arrow-right"></i>
-
-Logout
-
-
-</a>
-
-
-</div>
-
-
-
-</div>
-
-<!-- ==========================
-NAVIGATION BAR
-========================== -->
-
-<div class="profile-nav">
-
-
-<a href="dashboard.php">
-<i class="bi bi-speedometer2"></i>
-Dashboard
-</a>
-
-
-<a href="bill.php">
-<i class="bi bi-receipt"></i>
-Bills
-</a>
-
-
-<a href="payment.php">
-<i class="bi bi-credit-card"></i>
-Payment
-</a>
-
-
-<a href="complaint.php">
-<i class="bi bi-tools"></i>
-Complaint
-</a>
-
-
-<a href="outage_map.php">
-<i class="bi bi-lightning-charge"></i>
-Power Outage
-</a>
-
-
-<a href="notifications.php">
-<i class="bi bi-bell-fill"></i>
-Notifications
-</a>
-
-
-</div>
-
-<!-- ==========================
-PROFILE TOWER BANNER
-========================== -->
-
-
-<div class="profile-banner">
-
-
-<div class="banner-content">
-
-
-<div class="profile-icon">
-
-
-<i class="bi bi-person-fill"></i>
-
-
-</div>
-
-
-
-<div>
-
-
-<h1>
-My Profile
-</h1>
-
+<h4 class="mt-3">APDCL</h4>
 
 <p>
-Manage your personal information and electricity account
+Assam Power Distribution Company Limited
 </p>
 
+</div>
+
+<div class="col-lg-4">
+
+<h5>Quick Links</h5>
+
+<p><a href="dashboard.php">Dashboard</a></p>
+
+<p><a href="bill.php">My Bills</a></p>
+
+<p><a href="payment_history.php">Payment History</a></p>
+
+<p><a href="complaint.php">Complaints</a></p>
 
 </div>
 
+<div class="col-lg-4">
+
+<h5>Customer Care</h5>
+
+<p>📞 1912</p>
+
+<p>✉ customercare@apdcl.org</p>
+
+<p>🌐 www.apdcl.org</p>
 
 </div>
 
-
 </div>
-
-<!-- ==========================
-PROFILE CONTENT
-========================== -->
-
-
-<div class="page-wrapper">
-
-<div class="container-fluid profile-container">
-
-
-<div class="row g-4 align-items-start">
-
-
-
-<!-- LEFT PROFILE CARD -->
-
-<div class="col-lg-3">
-
-
-<div class="profile-card text-center">
-
-
-<img src="<?= $profilePhoto ?>"
-class="profile-image">
-
-
-<h3 class="mt-3 fw-bold">
-
-<?= htmlspecialchars($user['name']); ?>
-
-</h3>
-
-
-
-<span class="badge bg-success">
-
-Active Consumer
-
-</span>
-
-
 
 <hr>
 
+<div class="text-center">
 
+    &copy; <?php echo date('Y'); ?>
 
-<div class="profile-info">
-
-<i class="bi bi-person-badge-fill"></i>
-
-<div>
-
-<b>Consumer Number</b>
-
-<br>
-
-<?= $user['consumer_no']; ?>
+    APDCL Consumer Portal | Internship Demo Project
 
 </div>
 
-
 </div>
-
-
-
-
-<div class="profile-info">
-
-<i class="bi bi-telephone-fill"></i>
-
-<div>
-
-<b>Mobile</b>
-
-<br>
-
-<?= $user['mobile']; ?>
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="profile-info">
-
-<i class="bi bi-envelope-fill"></i>
-
-<div>
-
-<b>Email</b>
-
-<br>
-
-<?= $user['email']; ?>
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<!-- RIGHT SIDE -->
-
-<div class="col-lg-9">
-
-
-
-<div class="profile-card">
-
-
-<h3 class="card-heading">
-
-<i class="bi bi-person-lines-fill"></i>
-
-Personal Information
-
-</h3>
-
-
-
-
-<div class="row">
-
-
-
-<div class="col-md-6 mb-3">
-
-
-<label>
-Full Name
-</label>
-
-
-<input type="text"
-class="form-control"
-name="name"
-value="<?= htmlspecialchars($user['name']); ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-
-<label>
-Consumer Number
-</label>
-
-
-<input type="text"
-class="form-control"
-value="<?= $user['consumer_no']; ?>"
-readonly>
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-
-<label>
-Email Address
-</label>
-
-
-<input type="email"
-class="form-control"
-name="email"
-value="<?= htmlspecialchars($user['email']); ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-
-<label>
-Mobile Number
-</label>
-
-
-<input type="text"
-class="form-control"
-name="mobile"
-value="<?= htmlspecialchars($user['mobile']); ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-12 mb-3">
-
-
-<label>
-Address
-</label>
-
-
-<textarea class="form-control"
-name="address"
-rows="3"><?= htmlspecialchars($user['address']); ?></textarea>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-<button class="btn btn-primary float-end">
-
-<i class="bi bi-save"></i>
-
-Update Profile
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<!-- ELECTRICITY DETAILS -->
-
-
-<div class="profile-card mt-4">
-
-
-
-<h3 class="card-heading">
-
-<i class="bi bi-lightning-charge-fill"></i>
-
-Electricity Connection Details
-
-</h3>
-
-
-
-
-<div class="row">
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-Meter Number
-</label>
-
-
-<input class="form-control"
-value="<?= $user['meter_no'] ?? 'N/A'; ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-Category
-</label>
-
-
-<input class="form-control"
-value="<?= $user['category'] ?? 'Domestic'; ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-Zone
-</label>
-
-
-<input class="form-control"
-value="<?= $user['zone'] ?? 'N/A'; ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-Circle
-</label>
-
-
-<input class="form-control"
-value="<?= $user['circle'] ?? 'N/A'; ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-Sub Division
-</label>
-
-
-<input class="form-control"
-value="<?= $user['sub_division'] ?? 'N/A'; ?>">
-
-
-</div>
-
-
-
-
-
-<div class="col-md-6 mb-3">
-
-<label>
-DTR Number
-</label>
-
-
-<input class="form-control"
-value="<?= $user['dtr_no'] ?? 'N/A'; ?>">
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-<!-- ==========================
-CHANGE PASSWORD
-========================== -->
-
-<div class="container-fluid px-5">
-
-<div class="profile-card mt-4">
-
-
-<h3 class="card-heading">
-
-<i class="bi bi-shield-lock-fill"></i>
-
-Change Password
-
-</h3>
-
-
-
-<div class="row">
-
-
-
-<div class="col-md-4 mb-3">
-
-
-<label>
-Current Password
-</label>
-
-
-<div class="input-group">
-
-
-<span class="input-group-text">
-
-<i class="bi bi-lock-fill"></i>
-
-</span>
-
-
-<input type="password"
-class="form-control"
-placeholder="Enter current password">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="col-md-4 mb-3">
-
-
-<label>
-New Password
-</label>
-
-
-<div class="input-group">
-
-
-<span class="input-group-text">
-
-<i class="bi bi-key-fill"></i>
-
-</span>
-
-
-<input type="password"
-class="form-control"
-placeholder="Enter new password">
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="col-md-4 mb-3">
-
-
-<label>
-Confirm Password
-</label>
-
-
-<div class="input-group">
-
-
-<span class="input-group-text">
-
-<i class="bi bi-check-circle-fill"></i>
-
-</span>
-
-
-<input type="password"
-class="form-control"
-placeholder="Confirm password">
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-<div class="text-end">
-
-
-<button class="btn password-btn">
-
-
-<i class="bi bi-shield-check"></i>
-
-Change Password
-
-
-</button>
-
-
-</div>
-
-
-
-<div class="password-note mt-3">
-
-
-<i class="bi bi-info-circle-fill"></i>
-
-For security reasons, use a strong password with letters, numbers and symbols.
-
-
-</div>
-
-
-
-</div>
-
-<!-- ==========================
-FOOTER
-========================== -->
-
-<footer class="apdcl-footer">
-
-
-<div class="footer-container">
-
-
-<!-- APDCL BRAND -->
-
-<div class="footer-section">
-
-
-<img src="../assets/images/logo-circle.png">
-
-
-<h4>
-APDCL
-</h4>
-
-
-<p>
-Assam Power Distribution Company Limited
-</p>
-
-
-<small>
-© <?= date('Y'); ?> All Rights Reserved
-</small>
-
-
-</div>
-
-
-
-
-
-<!-- QUICK LINKS -->
-
-<div class="footer-section">
-
-
-<h5>
-Quick Links
-</h5>
-
-
-<a href="dashboard.php">
-Dashboard
-</a>
-
-
-<a href="bill.php">
-My Bills
-</a>
-
-
-<a href="payment_history.php">
-Payment History
-</a>
-
-
-<a href="complaint.php">
-Complaints
-</a>
-
-
-</div>
-
-
-
-
-
-
-<!-- CUSTOMER SERVICE -->
-
-<div class="footer-section">
-
-
-<h5>
-Customer Service
-</h5>
-
-
-<p>
-<i class="bi bi-telephone-fill"></i>
-1912
-</p>
-
-
-<p>
-<i class="bi bi-envelope-fill"></i>
-customercare@apdcl.org
-</p>
-
-
-<p>
-<i class="bi bi-globe"></i>
-www.apdcl.org
-</p>
-
-
-</div>
-
-
-
-
-
-
-<!-- SOCIAL -->
-
-<div class="footer-section">
-
-
-<h5>
-Follow Us
-</h5>
-
-
-<div class="social-icons">
-
-
-<a href="#">
-<i class="bi bi-facebook"></i>
-</a>
-
-
-<a href="#">
-<i class="bi bi-twitter"></i>
-</a>
-
-
-<a href="#">
-<i class="bi bi-youtube"></i>
-</a>
-
-
-<a href="#">
-<i class="bi bi-globe"></i>
-</a>
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-
-APDCL Consumer Portal | Internship Demo Project
-
-
-</div>
-
 
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
 
+const moon = document.querySelector(".bi-moon");
+
+if (moon) {
+    moon.addEventListener("click", function () {
+        document.body.classList.toggle("dark");
+    });
+}
+
+</script>
 
 </body>
 
