@@ -126,360 +126,379 @@ if(isset($_POST['login'])){
 
 <title>APDCL Consumer Login</title>
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap Icons -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-      rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 :root{
 
-    --primary:#0056b3;
-    --secondary:#1976d2;
-    --orange:#ffc107;
-    --dark:#0b3d91;
-    --white:#ffffff;
+--primary:#0056b3;
+--secondary:#1976d2;
+--dark:#0B2C74;
+--light:#eef5ff;
+--white:#fff;
 
 }
 
 body{
 
-    background:#eef4fb;
-    overflow:hidden;
+background:#eef4fb;
+
+overflow:hidden;
 
 }
 
-.main-wrapper{
+/*==========================
+MAIN LAYOUT
+==========================*/
 
-    display:flex;
-    width:100%;
-    height:100vh;
+.container-fluid{
+
+height:100vh;
+
+padding:0;
 
 }
 
-/*==================================
+.row{
+
+height:100%;
+
+}
+
+/*==========================
 LEFT PANEL
-==================================*/
+==========================*/
 
 .left-panel{
 
-    width:58%;
-    position:relative;
+background:
 
-    background:
-    linear-gradient(rgba(0,40,95,.45),
-    rgba(0,40,95,.55)),
-    url("../assets/images/consumer-bg.jpg");
+linear-gradient(rgba(0,33,71,.55),
+rgba(0,33,71,.65)),
 
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+url("../assets/images/consumer-bg.jpg");
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+background-size:cover;
 
-    overflow:hidden;
+background-position:center;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:60px;
+
+color:#fff;
 
 }
 
 .left-content{
 
-    width:82%;
-    color:#fff;
-    position:relative;
-    z-index:10;
+max-width:700px;
+
+animation:fadeLeft .8s;
 
 }
 
-.logo-row{
+.logo{
 
-    display:flex;
-    align-items:center;
-    margin-bottom:40px;
+display:flex;
 
-}
+align-items:center;
 
-.logo-row img{
-
-    width:95px;
-    height:95px;
-    background:#fff;
-    padding:8px;
-    border-radius:50%;
-    margin-right:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+margin-bottom:40px;
 
 }
 
-.logo-row h1{
+.logo img{
 
-    font-size:58px;
-    font-weight:700;
-    margin:0;
+width:90px;
+
+height:90px;
+
+background:#fff;
+
+padding:8px;
+
+border-radius:50%;
+
+margin-right:20px;
 
 }
 
-.logo-row h6{
+.logo h1{
 
-    margin-top:6px;
-    font-weight:400;
-    letter-spacing:1px;
-    opacity:.95;
+font-size:52px;
+
+font-weight:700;
+
+margin:0;
+
+}
+
+.logo p{
+
+margin:0;
+
+opacity:.9;
 
 }
 
 .hero-title{
 
-    font-size:56px;
-    font-weight:700;
-    line-height:1.2;
-    margin-bottom:25px;
+font-size:50px;
+
+font-weight:700;
+
+line-height:1.2;
+
+margin-bottom:25px;
 
 }
 
 .hero-title span{
 
-    color:#ffd54f;
+color:#ffd54f;
 
 }
 
 .hero-text{
 
-    font-size:20px;
-    line-height:34px;
-    max-width:700px;
-    margin-bottom:50px;
+font-size:19px;
 
-}
-/*==================================
-FEATURE GRID
-==================================*/
+line-height:32px;
 
-.feature-grid{
-
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
+margin-bottom:40px;
 
 }
 
-.feature-card{
+.feature{
 
-    background:rgba(255,255,255,.14);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.18);
+display:flex;
 
-    border-radius:18px;
-    padding:28px;
+gap:20px;
 
-    transition:.35s;
-    cursor:pointer;
+margin-bottom:20px;
 
-}
+padding:20px;
 
-.feature-card:hover{
+background:rgba(255,255,255,.12);
 
-    transform:translateY(-8px);
-    background:rgba(255,255,255,.22);
+backdrop-filter:blur(12px);
 
-}
+border-radius:18px;
 
-.feature-card i{
-
-    font-size:40px;
-    color:#ffd54f;
-    display:block;
-    margin-bottom:15px;
+transition:.3s;
 
 }
 
-.feature-card h5{
+.feature:hover{
 
-    font-weight:600;
-    margin-bottom:10px;
-
-}
-
-.feature-card p{
-
-    margin:0;
-    font-size:14px;
-    opacity:.9;
+transform:translateY(-6px);
 
 }
 
-/*==================================
+.feature i{
+
+font-size:36px;
+
+color:#ffd54f;
+
+}
+
+/*==========================
 RIGHT PANEL
-==================================*/
+==========================*/
 
 .right-panel{
 
-    width:42%;
+display:flex;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+justify-content:center;
 
-    padding:40px;
+align-items:center;
 
-    background:linear-gradient(
-    135deg,
-    #003c8f,
-    #1565c0,
-    #42a5f5);
+background:linear-gradient(135deg,#003c8f,#1565c0,#42a5f5);
+
+padding:30px;
 
 }
 
 .login-card{
 
-    width:100%;
-    max-width:470px;
+width:100%;
 
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(18px);
+max-width:460px;
 
-    border-radius:24px;
-    overflow:hidden;
+background:#fff;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
+border-radius:24px;
 
-    animation:fadeUp .8s ease;
+overflow:hidden;
 
-}
+box-shadow:0 25px 60px rgba(0,0,0,.25);
 
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-        transform:translateY(40px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
+animation:fadeUp .8s;
 
 }
 
 .login-header{
 
-    padding:35px;
-    text-align:center;
+text-align:center;
+
+padding:35px;
+
+background:linear-gradient(135deg,#0056b3,#1976d2);
+
+color:#fff;
 
 }
 
 .login-header img{
 
-    width:95px;
-    height:95px;
+width:90px;
 
-    background:#fff;
-    padding:8px;
+height:90px;
 
-    border-radius:50%;
+background:#fff;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+padding:8px;
+
+border-radius:50%;
+
+margin-bottom:15px;
 
 }
 
 .login-header h3{
 
-    margin-top:20px;
-    font-weight:700;
-    color:#003c8f;
+font-weight:700;
+
+margin:0;
 
 }
 
 .login-header p{
 
-    margin-top:8px;
-    color:#666;
+margin-top:8px;
+
+opacity:.9;
 
 }
 
 .form-control{
 
-    height:55px;
-    border-radius:12px;
+height:56px;
 
-}
-
-.form-control:focus{
-
-    border-color:#1976d2;
-    box-shadow:0 0 12px rgba(25,118,210,.2);
+border-radius:14px;
 
 }
 
 .input-group-text{
 
-    background:#0d47a1;
-    color:#fff;
-    border:none;
+background:#0B2C74;
+
+color:#fff;
+
+border:none;
 
 }
 
-.btn-primary{
+.btn-login{
 
-    height:55px;
+height:56px;
 
-    border:none;
-    border-radius:12px;
+border-radius:14px;
 
-    font-size:18px;
-    font-weight:600;
+font-size:18px;
 
-    background:linear-gradient(
-    135deg,
-    #0056b3,
-    #1976d2);
+font-weight:600;
 
-    transition:.3s;
+background:linear-gradient(135deg,#0056b3,#1976d2);
+
+border:none;
+
+color:#fff;
+
+transition:.3s;
 
 }
 
-.btn-primary:hover{
+.btn-login:hover{
 
-    transform:translateY(-3px);
+transform:translateY(-3px);
 
-    box-shadow:0 15px 35px rgba(25,118,210,.35);
+box-shadow:0 15px 35px rgba(0,86,179,.3);
 
 }
 
 .footer{
 
-    text-align:center;
-    font-size:13px;
-    margin-top:25px;
-    color:#666;
+font-size:13px;
+
+color:#666;
+
+text-align:center;
+
+margin-top:25px;
 
 }
 
-/*==================================
-RESPONSIVE
-==================================*/
+@keyframes fadeUp{
 
-@media(max-width:991px){
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes fadeLeft{
+
+from{
+
+opacity:0;
+
+transform:translateX(-40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+@media(max-width:992px){
 
 .left-panel{
 
@@ -493,28 +512,6 @@ width:100%;
 
 }
 
-.login-card{
-
-max-width:520px;
-
-}
-
-}
-
-@media(max-width:576px){
-
-.right-panel{
-
-padding:20px;
-
-}
-
-.login-card{
-
-border-radius:18px;
-
-}
-
 }
 
 </style>
@@ -523,393 +520,340 @@ border-radius:18px;
 
 <body>
 
-<div class="main-wrapper">
-<!-- =====================================
-LEFT PANEL
-===================================== -->
+<div class="container-fluid">
 
-<div class="left-panel">
+<div class="row">
 
-    <div class="left-content">
+<!-- LEFT PANEL -->
 
-        <!-- Logo -->
+<div class="col-lg-7 left-panel">
 
-        <div class="logo-row">
+<div class="left-content">
 
-            <img src="../assets/images/logo-circle.png"
-                 alt="APDCL Logo">
+<div class="logo">
 
-            <div>
+<img src="../assets/images/logo-circle.png">
 
-                <h1>APDCL</h1>
+<div>
 
-                <h6>
-                    ASSAM POWER DISTRIBUTION<br>
-                    COMPANY LIMITED
-                </h6>
+<h1>APDCL</h1>
 
-            </div>
-
-        </div>
-
-        <!-- Hero Text -->
-
-        <h2 class="hero-title">
-
-            Powering Assam,<br>
-
-            <span>Empowering Consumers</span>
-
-        </h2>
-
-        <p class="hero-text">
-
-            Welcome to the APDCL Consumer Portal.
-
-            Access your electricity account securely,
-            pay bills online, submit complaints,
-            monitor consumption and receive important
-            service updates anytime.
-
-        </p>
-
-        <!-- Features -->
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-
-                <i class="bi bi-lightning-charge-fill"></i>
-
-                <h5>Online Bill Payment</h5>
-
-                <p>
-
-                    Pay electricity bills securely
-                    from anywhere.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="bi bi-speedometer2"></i>
-
-                <h5>Meter Reading</h5>
-
-                <p>
-
-                    View monthly consumption
-                    and meter history.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="bi bi-chat-left-text-fill"></i>
-
-                <h5>Complaint Service</h5>
-
-                <p>
-
-                    Register complaints and
-                    track their live status.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="bi bi-bell-fill"></i>
-
-                <h5>Latest Notices</h5>
-
-                <p>
-
-                    Stay informed with outage
-                    alerts and announcements.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-<!-- =====================================
-RIGHT PANEL
-===================================== -->
-
-<div class="right-panel">
-
-    <div class="login-card">
-
-        <div class="login-header">
-
-            <img src="../assets/images/logo-circle.png"
-                 alt="APDCL Logo">
-
-            <h3>Consumer Login</h3>
-
-            <p>
-                Sign in to access your APDCL Consumer Account
-            </p>
-
-        </div>
-
-        <div class="card-body p-4">
-
-            <?= $success ?>
-
-            <?= $error ?>
-
-            <form method="POST">
-
-                <!-- Consumer Number -->
-
-                <div class="mb-3">
-
-                    <label class="form-label fw-semibold">
-
-                        Consumer Number
-
-                    </label>
-
-                    <div class="input-group">
-
-                        <span class="input-group-text">
-
-                            <i class="bi bi-person-badge-fill"></i>
-
-                        </span>
-
-                        <input
-                            type="text"
-                            name="consumer_no"
-                            class="form-control"
-                            placeholder="Enter Consumer Number"
-                            autocomplete="off"
-                            required>
-
-                    </div>
-
-                </div>
-
-                <!-- Password -->
-
-                <div class="mb-3">
-
-                    <label class="form-label fw-semibold">
-
-                        Password
-
-                    </label>
-
-                    <div class="input-group">
-
-                        <span class="input-group-text">
-
-                            <i class="bi bi-lock-fill"></i>
-
-                        </span>
-
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            class="form-control"
-                            placeholder="Enter Password"
-                            required>
-
-                        <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                            onclick="togglePassword()">
-
-                            <i id="eyeIcon"
-                               class="bi bi-eye-fill"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- Remember -->
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-
-                    <div class="form-check">
-
-                        <input
-                            class="form-check-input"
-                            type="checkbox"
-                            id="remember">
-
-                        <label
-                            class="form-check-label"
-                            for="remember">
-
-                            Remember Me
-
-                        </label>
-
-                    </div>
-
-                    <a href="forgot_password.php"
-                       class="text-decoration-none">
-
-                        Forgot Password?
-
-                    </a>
-
-                </div>
-
-                <!-- Login -->
-
-                <div class="d-grid mb-3">
-
-                    <button
-                        type="submit"
-                        name="login"
-                        class="btn btn-primary">
-
-                        <i class="bi bi-box-arrow-in-right me-2"></i>
-
-                        Login
-
-                    </button>
-
-                </div>
-
-            </form>
-
-            <hr class="my-4">
-
-            <div class="d-grid">
-
-                <a href="../index.php"
-                   class="btn btn-outline-primary btn-lg">
-
-                    <i class="bi bi-house-door-fill me-2"></i>
-
-                    Back to Home
-
-                </a>
-
-            </div>
-
-            <div class="footer">
-
-                © <?= date("Y") ?>
-
-                APDCL Consumer Portal
-
-            </div>
-
-        </div>
-
-    </div>
+<p>Assam Power Distribution Company Limited</p>
 
 </div>
 
 </div>
-<!-- Bootstrap JS -->
+
+<h2 class="hero-title">
+
+Powering Assam,
+
+<span>Empowering Consumers</span>
+
+</h2>
+
+<p class="hero-text">
+
+Welcome to the APDCL Consumer Portal.
+
+Pay bills, register complaints,
+
+track outages and manage your
+
+electricity connection securely.
+
+</p>
+
+<div class="feature">
+
+<i class="bi bi-lightning-charge-fill"></i>
+
+<div>
+
+<h5>Online Bill Payment</h5>
+
+<p>Pay electricity bills securely from anywhere.</p>
+
+</div>
+
+</div>
+
+<div class="feature">
+
+<i class="bi bi-chat-left-text-fill"></i>
+
+<div>
+
+<h5>Complaint Tracking</h5>
+
+<p>Monitor complaint status in real time.</p>
+
+</div>
+
+</div>
+
+<div class="feature">
+
+<i class="bi bi-bell-fill"></i>
+
+<div>
+
+<h5>Latest Notices</h5>
+
+<p>Stay informed about outages and announcements.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="col-lg-5 right-panel">
+
+<div class="login-card">
+
+<div class="login-header">
+
+<img src="../assets/images/logo-circle.png">
+
+<h3>Consumer Login</h3>
+
+<p>Sign in securely to your APDCL account</p>
+
+</div>
+
+<div class="p-4">
+
+<?= $success ?>
+
+<?= $error ?>
+
+<form method="POST" autocomplete="off">
+<!-- Consumer Number -->
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Consumer Number
+
+</label>
+
+<div class="input-group">
+
+<span class="input-group-text">
+
+<i class="bi bi-person-badge-fill"></i>
+
+</span>
+
+<input
+
+type="text"
+
+name="consumer_no"
+
+class="form-control"
+
+placeholder="Enter Consumer Number"
+
+autocomplete="off"
+
+spellcheck="false"
+
+required>
+
+</div>
+
+</div>
+
+<!-- Password -->
+
+<div class="mb-3">
+
+<label class="form-label fw-semibold">
+
+Password
+
+</label>
+
+<div class="input-group">
+
+<span class="input-group-text">
+
+<i class="bi bi-lock-fill"></i>
+
+</span>
+
+<input
+
+type="password"
+
+id="password"
+
+name="password"
+
+class="form-control"
+
+placeholder="Enter Password"
+
+autocomplete="new-password"
+
+required>
+
+<button
+
+type="button"
+
+class="btn btn-outline-secondary"
+
+onclick="togglePassword()">
+
+<i class="bi bi-eye-fill" id="eyeIcon"></i>
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Remember -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div class="form-check">
+
+<input
+
+class="form-check-input"
+
+type="checkbox"
+
+id="remember"
+
+autocomplete="off">
+
+<label
+
+class="form-check-label"
+
+for="remember">
+
+Remember Me
+
+</label>
+
+</div>
+
+<a
+
+href="forgot_password.php"
+
+class="text-decoration-none">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<!-- Login Button -->
+
+<div class="d-grid">
+
+<button
+
+type="submit"
+
+name="login"
+
+class="btn btn-login">
+
+<i class="bi bi-shield-lock-fill me-2"></i>
+
+Continue to OTP
+
+</button>
+
+</div>
+
+</form>
+
+<hr class="my-4">
+
+<div class="d-grid">
+
+<a
+
+href="../index.php"
+
+class="btn btn-outline-primary btn-lg">
+
+<i class="bi bi-house-door-fill me-2"></i>
+
+Back to Home
+
+</a>
+
+</div>
+
+<div class="footer">
+
+© <?= date("Y") ?>
+
+APDCL Consumer Portal
+
+<br>
+
+Internship Demo Project
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-/*=========================================
-SHOW / HIDE PASSWORD
-=========================================*/
-
 function togglePassword(){
 
-    const password = document.getElementById("password");
-    const eye = document.getElementById("eyeIcon");
+    const password=document.getElementById("password");
+    const eye=document.getElementById("eyeIcon");
 
-    if(password.type === "password"){
+    if(password.type==="password"){
 
-        password.type = "text";
-        eye.classList.remove("bi-eye-fill");
-        eye.classList.add("bi-eye-slash-fill");
+        password.type="text";
+        eye.classList.replace("bi-eye-fill","bi-eye-slash-fill");
 
     }else{
 
-        password.type = "password";
-        eye.classList.remove("bi-eye-slash-fill");
-        eye.classList.add("bi-eye-fill");
+        password.type="password";
+        eye.classList.replace("bi-eye-slash-fill","bi-eye-fill");
 
     }
 
 }
 
-/*=========================================
-SMOOTH LOGIN CARD ANIMATION
-=========================================*/
+window.onload=function(){
 
-window.addEventListener("load",function(){
+    document.querySelector("form").reset();
 
-    const card=document.querySelector(".login-card");
-
-    card.style.opacity="0";
-    card.style.transform="translateY(35px)";
-
-    setTimeout(function(){
-
-        card.style.transition="all .8s ease";
-        card.style.opacity="1";
-        card.style.transform="translateY(0)";
-
-    },150);
-
-});
-
-/*=========================================
-FEATURE CARD HOVER EFFECT
-=========================================*/
-
-document.querySelectorAll(".feature-card").forEach(function(card){
-
-    card.addEventListener("mouseenter",function(){
-
-        card.style.transform="translateY(-8px) scale(1.02)";
-
-    });
-
-    card.addEventListener("mouseleave",function(){
-
-        card.style.transform="translateY(0) scale(1)";
-
-    });
-
-});
-
-/*=========================================
-LOGIN BUTTON EFFECT
-=========================================*/
-
-const loginBtn=document.querySelector(".btn-primary");
-
-loginBtn.addEventListener("mouseenter",function(){
-
-    loginBtn.style.transform="translateY(-3px)";
-
-});
-
-loginBtn.addEventListener("mouseleave",function(){
-
-    loginBtn.style.transform="translateY(0)";
-
-});
+};
 
 </script>
 
 </body>
+
 </html>
