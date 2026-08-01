@@ -126,77 +126,762 @@ if(!$paymentQuery){
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Payment History</title>
+<title>APDCL | Payment History</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
-    background:#eef4fb;
-    font-family:'Segoe UI',sans-serif;
+background:#eef4fb;
+overflow-x:hidden;
 }
 
-.navbar{
-    background:#0056b3;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+/*========== Layout ==========*/
+
+.wrapper{
+display:flex;
+min-height:100vh;
 }
 
-.brand{
-    color:#fff;
-    font-size:24px;
-    font-weight:bold;
+/*========== Sidebar ==========*/
+
+.sidebar{
+
+width:270px;
+
+background:linear-gradient(180deg,#0B2C74,#1565d8);
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+bottom:0;
+
+padding:25px;
+
+display:flex;
+
+flex-direction:column;
+
+color:#fff;
+
+box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+z-index:1000;
+
+}
+
+.logo{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.logo img{
+
+width:85px;
+
+height:85px;
+
+border-radius:50%;
+
+background:#fff;
+
+padding:6px;
+
+margin-bottom:10px;
+
+}
+
+.logo h4{
+
+font-weight:700;
+
+margin-bottom:3px;
+
+}
+
+.logo small{
+
+opacity:.8;
+
+}
+
+.menu{
+
+list-style:none;
+
+padding:0;
+
+margin-top:20px;
+
+flex:1;
+
+}
+
+.menu li{
+
+margin-bottom:8px;
+
+}
+
+.menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:14px 18px;
+
+border-radius:12px;
+
+color:#fff;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+background:rgba(255,255,255,.15);
+
+transform:translateX(5px);
+
+}
+
+.menu .active a{
+
+background:#fff;
+
+color:#0B2C74;
+
+font-weight:600;
+
+}
+
+.menu i{
+
+font-size:20px;
+
+}
+
+/*========== Customer Care ==========*/
+
+.support{
+
+margin-top:auto;
+
+background:rgba(255,255,255,.15);
+
+padding:20px;
+
+border-radius:18px;
+
+text-align:center;
+
+}
+
+.support i{
+
+font-size:40px;
+
+}
+
+.support h2{
+
+font-size:34px;
+
+font-weight:700;
+
+margin:8px 0;
+
+}
+
+/*========== Main ==========*/
+
+.main{
+
+margin-left:270px;
+
+width:calc(100% - 270px);
+
+padding:25px;
+
+}
+
+/*========== Header ==========*/
+
+.header{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:18px 28px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+margin-bottom:30px;
+
+}
+
+.header h3{
+
+margin:0;
+
+font-weight:700;
+
+color:#0B2C74;
+
+}
+
+.header p{
+
+margin:0;
+
+color:#777;
+
+font-size:14px;
+
+}
+
+.header-right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.header-right i{
+
+font-size:22px;
+
+cursor:pointer;
+
+color:#0B2C74;
+
+}
+
+.user{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.user img{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #1565d8;
+
+}
+
+.notification{
+
+position:relative;
+
+}
+
+.notification span{
+
+position:absolute;
+
+top:-6px;
+
+right:-8px;
+
+background:red;
+
+color:#fff;
+
+width:18px;
+
+height:18px;
+
+border-radius:50%;
+
+font-size:11px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.profile-img{
+
+width:150px;
+
+height:150px;
+
+border-radius:50%;
+
+border:5px solid #1565d8;
+
+object-fit:cover;
+
+}
+
+.info-box{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:18px;
+
+background:#f8fbff;
+
+border-radius:15px;
+
+transition:.3s;
+
+}
+
+.info-box:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.info-box i{
+
+font-size:28px;
+
+color:#1565d8;
+
+width:55px;
+
+height:55px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#e8f2ff;
+
+border-radius:50%;
+
 }
 
 .summary-card{
-    border:none;
-    border-radius:18px;
-    overflow:hidden;
-    color:#fff;
-    transition:.3s;
-    cursor:pointer;
+
+position:relative;
+
+padding:30px;
+
+border-radius:22px;
+
+overflow:hidden;
+
+color:#fff;
+
+transition:.35s;
+
+box-shadow:0 15px 25px rgba(0,0,0,.12);
+
 }
 
 .summary-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 15px 30px rgba(0,0,0,.20);
+
+transform:translateY(-8px);
+
 }
 
-.summary-card .card-body{
-    padding:25px;
+.paid{
+
+background:linear-gradient(135deg,#1abc9c,#16a085);
+
+}
+
+.amount{
+
+background:linear-gradient(135deg,#1565d8,#0B2C74);
+
+}
+
+.last{
+
+background:linear-gradient(135deg,#f39c12,#e67e22);
+
 }
 
 .summary-card h2{
-    font-size:34px;
-    font-weight:bold;
+
+font-size:34px;
+
+font-weight:700;
+
+margin-top:10px;
+
 }
 
-.summary-card i{
-    font-size:48px;
-    opacity:.25;
-    position:absolute;
-    right:20px;
-    bottom:15px;
+.icon-bg{
+
+position:absolute;
+
+right:20px;
+
+bottom:20px;
+
+font-size:60px;
+
+opacity:.18;
+
+}
+
+.table{
+
+border-collapse:separate;
+
+border-spacing:0 12px;
+
+}
+
+.table thead th{
+
+background:#0B2C74;
+
+color:#fff;
+
+border:none;
+
+padding:15px;
+
+}
+
+.table tbody tr{
+
+background:#fff;
+
+box-shadow:0 8px 18px rgba(0,0,0,.06);
+
+transition:.3s;
+
+}
+
+.table tbody tr:hover{
+
+transform:scale(1.01);
+
+}
+
+.table td{
+
+padding:18px;
+
+vertical-align:middle;
+
+border:none;
+
+}
+
+.input-group-text{
+
+border:none;
+
+}
+
+.form-control{
+
+border:none;
+
+box-shadow:none;
+
+}
+
+.form-control:focus{
+
+box-shadow:none;
+
+}
+
+/*================ Footer ================*/
+
+.footer{
+
+margin-top:50px;
+
+background:linear-gradient(rgba(5,35,82,.92),rgba(5,35,82,.92)),
+
+url('../assets/images/footer-bg.png') center/cover;
+
+padding:45px;
+
+color:#fff;
+
+border-radius:20px;
+
+}
+
+.footer-logo{
+
+width:70px;
+
+margin-bottom:15px;
+
+}
+
+.footer h4,
+
+.footer h5{
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+.footer p{
+
+color:#d7e5ff;
+
+}
+
+.footer ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+.footer li{
+
+margin-bottom:12px;
+
+}
+
+.footer a{
+
+color:#d7e5ff;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.footer a:hover{
+
+padding-left:8px;
+
+color:#fff;
+
+}
+
+.social a{
+
+display:inline-flex;
+
+width:42px;
+
+height:42px;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(255,255,255,.15);
+
+border-radius:50%;
+
+margin-right:8px;
+
+font-size:18px;
+
+}
+
+.social a:hover{
+
+background:#2196f3;
+
+}
+
+.dark{
+
+background:#111827;
+
+}
+
+.dark .header,
+
+.dark .card,
+
+.dark .table tbody tr{
+
+background:#1f2937 !important;
+
+color:#fff;
+
+}
+
+.dark .form-control{
+
+background:#374151;
+
+color:#fff;
+
+border:none;
+
+}
+
+.dark .table thead th{
+
+background:#000;
+
+}
+
+.dark .footer{
+
+background:#08172e;
+
+}
+
+#topBtn{
+
+display:none;
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1565d8;
+
+color:#fff;
+
+font-size:20px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.3);
+
+z-index:999;
+
+}
+
+#topBtn:hover{
+
+background:#0B2C74;
+
 }
 
 .profile-card{
-    border:none;
-    border-radius:18px;
-    box-shadow:0 10px 20px rgba(0,0,0,.10);
+    border-radius:25px;
+    overflow:hidden;
+    transition:.3s;
 }
 
-.profile-card img{
-    width:110px;
-    height:110px;
-    border-radius:50%;
+.profile-card:hover{
+    transform:translateY(-5px);
+}
+
+.profile-photo{
+    width:160px;
+    height:160px;
     object-fit:cover;
-    border:4px solid #0d6efd;
+    border-radius:50%;
+    border:6px solid #1565d8;
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+    background:#fff;
 }
 
-.search-box{
-    border-radius:15px;
+.info-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#f8fbff;
+    border-radius:16px;
+    padding:18px;
+    transition:.3s;
+    height:100%;
+    border:1px solid #e6eefc;
+}
+
+.info-box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.info-box i{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#eaf3ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    color:#1565d8;
+}
+
+.info-box h6{
+    margin:0;
+    font-weight:600;
+}
+
+.info-box small{
+    color:#777;
+}
+
+.profile-card .btn{
+    padding:12px 28px;
+    font-weight:600;
 }
 
 </style>
@@ -205,23 +890,313 @@ body{
 
 <body>
 
-<nav class="navbar navbar-dark">
+<div class="wrapper">
 
-<div class="container">
+<!-- Sidebar -->
 
-<span class="brand">
+<div class="sidebar">
 
-APDCL Consumer Portal
+<div class="logo">
 
-</span>
+<img src="../assets/images/logo-circle.png">
+
+<h4>APDCL</h4>
+
+<small>Consumer Portal</small>
+
+</div>
+
+<ul class="menu">
+
+<li>
+
+<a href="dashboard.php">
+
+<i class="bi bi-speedometer2"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="bill.php">
+
+<i class="bi bi-receipt"></i>
+
+My Bills
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="payment_history.php">
+
+<i class="bi bi-credit-card"></i>
+
+Payment History
+
+</a>
+
+</li>
+
+<li>
+
+<a href="complaint.php">
+
+<i class="bi bi-tools"></i>
+
+Complaints
+
+</a>
+
+</li>
+
+<li>
+
+<a href="track_complaint.php">
+
+<i class="bi bi-geo-alt"></i>
+
+Track Complaint
+
+</a>
+
+</li>
+
+<li>
+
+<a href="outage_map.php">
+
+<i class="bi bi-lightning-charge"></i>
+
+Outage Map
+
+</a>
+
+</li>
+
+<li>
+
+<a href="notice_board.php">
+
+<i class="bi bi-megaphone"></i>
+
+Notice Board
+
+</a>
+
+</li>
+
+<li>
+
+<a href="profile.php">
+
+<i class="bi bi-person-circle"></i>
+
+Profile
+
+</a>
+
+</li>
+
+<li>
+
+<a href="logout.php">
+
+<i class="bi bi-box-arrow-right"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+<div class="support">
+
+<i class="bi bi-headset"></i>
+
+<h5>Customer Care</h5>
+
+<h2>1912</h2>
+
+<small>24×7 Support</small>
+
+</div>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+<div class="header">
 
 <div>
 
-<a href="dashboard.php" class="btn btn-light">
+<h3>Payment History</h3>
 
-<i class="bi bi-house-fill"></i>
+<p>Manage all electricity bill payments</p>
 
-Dashboard
+</div>
+
+<div class="header-right">
+
+<a href="notifications.php" class="notification text-decoration-none">
+
+<i class="bi bi-bell-fill"></i>
+
+<span>3</span>
+
+</a>
+
+<button id="darkModeToggle" class="btn btn-outline-primary btn-sm">
+
+<i class="bi bi-moon-fill"></i>
+
+</button>
+
+<div class="user">
+
+<img src="<?= !empty($photo) ? $photo : '../assets/images/user.jpg'; ?>" alt="Profile">
+
+<div>
+
+<strong><?= htmlspecialchars($user['name']) ?></strong>
+
+<br>
+
+<small>Consumer</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!--==============================
+    CONSUMER PROFILE
+===============================-->
+
+<div class="card border-0 shadow-lg rounded-4 mb-4">
+
+<div class="card-body p-4">
+
+<div class="row align-items-center">
+
+<div class="col-lg-2 text-center">
+
+<img src="<?= !empty($photo) ? $photo : '../assets/images/user.jpg'; ?>"
+     class="profile-photo"
+     alt="Consumer Profile">
+
+</div>
+
+<div class="col-lg-7">
+
+<span class="badge bg-success px-3 py-2 mb-3">
+
+<i class="bi bi-patch-check-fill"></i>
+
+Active Consumer
+
+</span>
+
+<h2 class="fw-bold text-primary">
+
+<?= htmlspecialchars($user['name']) ?>
+
+</h2>
+
+<p class="text-muted">
+
+Consumer No :
+
+<strong>
+
+<?= htmlspecialchars($user['consumer_no']) ?>
+
+</strong>
+
+</p>
+
+<div class="row mt-4">
+
+<div class="col-md-6 mb-3">
+
+<div class="info-box">
+
+<i class="bi bi-envelope-fill"></i>
+
+<div>
+
+<small>Email</small>
+
+<h6><?= htmlspecialchars($user['email']) ?></h6>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<div class="info-box">
+
+<i class="bi bi-phone-fill"></i>
+
+<div>
+
+<small>Mobile</small>
+
+<h6><?= htmlspecialchars($user['mobile']) ?></h6>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+    <div class="info-box">
+
+        <i class="bi bi-geo-alt-fill"></i>
+
+        <div>
+
+            <small>Sub Division</small>
+
+            <h6><?= htmlspecialchars($user['sub_division']) ?></h6>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-lg-3 text-end">
+
+<a href="profile.php"
+
+class="btn btn-primary rounded-pill px-4">
+
+<i class="bi bi-pencil-square"></i>
+
+Edit Profile
 
 </a>
 
@@ -229,99 +1204,23 @@ Dashboard
 
 </div>
 
-</nav>
-
-<div class="container py-4">
-
-<!-- ===============================
-PROFILE
-================================ -->
-
-<div class="card profile-card mb-4">
-
-<div class="card-body">
-
-<div class="row align-items-center">
-
-<div class="col-md-2 text-center">
-
-<?php
-
-$photo="../assets/images/default-user.png";
-
-if(!empty($user['photo']) && file_exists("../uploads/".$user['photo'])){
-
-    $photo="../uploads/".$user['photo'];
-
-}
-
-?>
-
-<img src="<?= $photo ?>">
-
-</div>
-
-<div class="col-md-10">
-
-<h3>
-
-<?= htmlspecialchars($user['name']) ?>
-
-</h3>
-
-<p class="mb-1">
-
-<strong>Consumer No :</strong>
-
-<?= htmlspecialchars($user['consumer_no']) ?>
-
-</p>
-
-<p class="mb-1">
-
-<strong>Mobile :</strong>
-
-<?= htmlspecialchars($user['mobile']) ?>
-
-</p>
-
-<p class="mb-0">
-
-<strong>Email :</strong>
-
-<?= htmlspecialchars($user['email']) ?>
-
-</p>
-
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-<!-- ===============================
-SUMMARY CARDS
-================================ -->
 
 <div class="row g-4 mb-4">
 
 <div class="col-lg-4">
 
-<div class="card summary-card bg-success position-relative">
+<div class="summary-card paid">
 
-<div class="card-body">
+<i class="bi bi-check-circle-fill icon-bg"></i>
 
 <h6>Total Payments</h6>
 
 <h2><?= $totalPaid ?></h2>
 
-<small>Successful Transactions</small>
-
-<i class="bi bi-check-circle-fill"></i>
-
-</div>
+<p>Successful Transactions</p>
 
 </div>
 
@@ -329,11 +1228,11 @@ SUMMARY CARDS
 
 <div class="col-lg-4">
 
-<div class="card summary-card bg-primary position-relative">
+<div class="summary-card amount">
 
-<div class="card-body">
+<i class="bi bi-cash-stack icon-bg"></i>
 
-<h6>Total Paid Amount</h6>
+<h6>Total Amount Paid</h6>
 
 <h2>
 
@@ -341,11 +1240,7 @@ SUMMARY CARDS
 
 </h2>
 
-<small>Lifetime Payments</small>
-
-<i class="bi bi-cash-stack"></i>
-
-</div>
+<p>Lifetime Payments</p>
 
 </div>
 
@@ -353,13 +1248,13 @@ SUMMARY CARDS
 
 <div class="col-lg-4">
 
-<div class="card summary-card bg-warning position-relative">
+<div class="summary-card last">
 
-<div class="card-body">
+<i class="bi bi-calendar-check-fill icon-bg"></i>
 
 <h6>Last Payment</h6>
 
-<h5>
+<h2>
 
 <?php
 
@@ -369,17 +1264,15 @@ echo date("d M Y",strtotime($lastPayment['payment_date']));
 
 }else{
 
-echo "No Payment";
+echo "--";
 
 }
 
 ?>
 
-</h5>
+</h2>
 
-<small>Latest Transaction</small>
-
-<i class="bi bi-calendar-check-fill"></i>
+<p>Latest Transaction</p>
 
 </div>
 
@@ -387,21 +1280,57 @@ echo "No Payment";
 
 </div>
 
+<!--==============================
+SEARCH PAYMENT
+===============================-->
+
+<div class="card border-0 shadow-lg rounded-4 mb-4">
+
+<div class="card-body p-4">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h4 class="fw-bold text-primary mb-1">
+
+<i class="bi bi-search"></i>
+
+Search Payment
+
+</h4>
+
+<small class="text-muted">
+
+Search using Bill Number, Transaction ID or Payment Method
+
+</small>
+
 </div>
 
-<!-- ===============================
-SEARCH
-================================ -->
+<div class="col-lg-4 text-end">
 
-<div class="card border-0 shadow mb-4">
+<span class="badge bg-primary fs-6">
 
-<div class="card-body">
+<?= mysqli_num_rows($paymentQuery) ?>
 
-<form method="GET">
+Records
 
-<div class="row">
+</span>
 
-<div class="col-md-10">
+</div>
+
+</div>
+
+<form method="GET" class="mt-4">
+
+<div class="input-group input-group-lg">
+
+<span class="input-group-text bg-primary text-white">
+
+<i class="bi bi-search"></i>
+
+</span>
 
 <input
 
@@ -409,17 +1338,13 @@ type="text"
 
 name="search"
 
-class="form-control form-control-lg search-box"
+class="form-control"
 
-placeholder="Search by Bill Number, Transaction ID or Payment Method"
+placeholder="Search here..."
 
 value="<?= htmlspecialchars($search) ?>">
 
-</div>
-
-<div class="col-md-2 d-grid">
-
-<button class="btn btn-primary btn-lg">
+<button class="btn btn-primary">
 
 <i class="bi bi-search"></i>
 
@@ -429,41 +1354,39 @@ Search
 
 </div>
 
-</div>
-
 </form>
 
 </div>
 
 </div>
 
-<!-- ==========================================
-        PAYMENT HISTORY TABLE
-========================================== -->
+<!--==============================
+PAYMENT HISTORY
+===============================-->
 
-<div class="card border-0 shadow-lg">
+<div class="card border-0 shadow-lg rounded-4">
 
-    <div class="card-header bg-success text-white">
+<div class="card-header bg-primary text-white py-3">
 
-        <h5 class="mb-0">
+<h4 class="mb-0">
 
-            <i class="bi bi-clock-history"></i>
+<i class="bi bi-credit-card-fill"></i>
 
-            Payment History
+Payment History
 
-        </h5>
+</h4>
 
-    </div>
+</div>
 
-    <div class="card-body">
+<div class="card-body">
 
 <?php if(mysqli_num_rows($paymentQuery)>0){ ?>
 
 <div class="table-responsive">
 
-<table class="table table-hover table-bordered align-middle">
+<table class="table align-middle table-hover">
 
-<thead class="table-dark">
+<thead>
 
 <tr>
 
@@ -471,19 +1394,19 @@ Search
 
 <th>Bill No</th>
 
-<th>Billing Month</th>
+<th>Month</th>
 
 <th>Amount</th>
 
-<th>Payment Method</th>
+<th>Method</th>
 
-<th>Transaction ID</th>
+<th>Transaction</th>
 
-<th>Payment Date</th>
+<th>Date</th>
 
 <th>Status</th>
 
-<th width="220">Action</th>
+<th>Action</th>
 
 </tr>
 
@@ -503,37 +1426,15 @@ while($row=mysqli_fetch_assoc($paymentQuery)){
 
 <td><?= $sl++ ?></td>
 
-<td>
+<td><strong><?= $row['bill_no'] ?></strong></td>
 
-<strong>
-
-<?= htmlspecialchars($row['bill_no']) ?>
-
-</strong>
-
-</td>
+<td><?= $row['month'] ?></td>
 
 <td>
 
-<?= htmlspecialchars($row['month']) ?>
-
-</td>
-
-<td>
-
-<strong class="text-success">
+<span class="text-success fw-bold">
 
 ₹ <?= number_format($row['amount'],2) ?>
-
-</strong>
-
-</td>
-
-<td>
-
-<span class="badge bg-primary">
-
-<?= htmlspecialchars($row['payment_method']) ?>
 
 </span>
 
@@ -541,17 +1442,23 @@ while($row=mysqli_fetch_assoc($paymentQuery)){
 
 <td>
 
-<small>
+<span class="badge bg-info">
 
-<?= htmlspecialchars($row['transaction_id']) ?>
+<?= $row['payment_method'] ?>
 
-</small>
+</span>
 
 </td>
 
 <td>
 
-<?= date("d M Y h:i A",strtotime($row['payment_date'])) ?>
+<small><?= $row['transaction_id'] ?></small>
+
+</td>
+
+<td>
+
+<?= date("d M Y",strtotime($row['payment_date'])) ?>
 
 </td>
 
@@ -561,15 +1468,15 @@ while($row=mysqli_fetch_assoc($paymentQuery)){
 
 if($row['status']=="Success"){
 
-    echo '<span class="badge bg-success">Success</span>';
+echo '<span class="badge bg-success">Paid</span>';
 
 }elseif($row['status']=="Pending"){
 
-    echo '<span class="badge bg-warning text-dark">Pending</span>';
+echo '<span class="badge bg-warning text-dark">Pending</span>';
 
 }else{
 
-    echo '<span class="badge bg-danger">Failed</span>';
+echo '<span class="badge bg-danger">Failed</span>';
 
 }
 
@@ -585,8 +1492,6 @@ class="btn btn-sm btn-primary">
 
 <i class="bi bi-eye-fill"></i>
 
-View
-
 </a>
 
 <a href="download_receipt.php?id=<?= $row['id'] ?>"
@@ -595,19 +1500,15 @@ class="btn btn-sm btn-success">
 
 <i class="bi bi-download"></i>
 
-PDF
-
 </a>
 
 <button
 
-onclick="window.open('print_receipt.php?id=<?= $row['id'] ?>','_blank')"
+onclick="window.open('print_receipt.php?id=<?= $row['id'] ?>')"
 
 class="btn btn-sm btn-dark">
 
 <i class="bi bi-printer-fill"></i>
-
-Print
 
 </button>
 
@@ -623,31 +1524,23 @@ Print
 
 </div>
 
-<?php }else{ ?>
+<?php } else { ?>
 
 <div class="text-center py-5">
 
-<i class="bi bi-receipt display-1 text-secondary"></i>
+<i class="bi bi-credit-card display-1 text-secondary"></i>
 
-<h3 class="mt-3">
-
-No Payment Records Found
-
-</h3>
+<h3>No Payment Records</h3>
 
 <p class="text-muted">
 
-You haven't made any electricity bill payments yet.
+No payment history found.
 
 </p>
 
-<a href="pay_bill.php"
+<a href="bill.php" class="btn btn-primary">
 
-class="btn btn-success">
-
-<i class="bi bi-credit-card-fill"></i>
-
-Pay Bill
+Pay Electricity Bill
 
 </a>
 
@@ -655,107 +1548,169 @@ Pay Bill
 
 <?php } ?>
 
-    </div>
+</div>
 
 </div>
 
-<!-- ==========================================
-        FOOTER
-========================================== -->
+<!-- ================= FOOTER ================= -->
 
-<footer class="mt-5">
+<footer class="footer mt-5">
 
-    <div class="card border-0 shadow">
+<div class="container-fluid">
 
-        <div class="card-body text-center">
+<div class="row">
 
-            <h5 class="text-primary">
+<div class="col-lg-4">
 
-                <i class="bi bi-lightning-charge-fill"></i>
+<img src="../assets/images/logo-circle.png" class="footer-logo">
 
-                Assam Power Distribution Company Limited
+<h4>APDCL</h4>
 
-            </h5>
+<p>
+Assam Power Distribution Company Limited
+</p>
 
-            <p class="mb-2">
+<div class="social">
 
-                APDCL Consumer Portal • Payment History
+<a href="#"><i class="bi bi-facebook"></i></a>
 
-            </p>
+<a href="#"><i class="bi bi-twitter-x"></i></a>
 
-            <small class="text-muted">
+<a href="#"><i class="bi bi-instagram"></i></a>
 
-                © <?= date("Y") ?> APDCL. All Rights Reserved.
+<a href="#"><i class="bi bi-youtube"></i></a>
 
-            </small>
+</div>
 
-        </div>
+</div>
 
-    </div>
+<div class="col-lg-4">
+
+<h5>Quick Links</h5>
+
+<ul>
+
+<li><a href="dashboard.php">Dashboard</a></li>
+
+<li><a href="bill.php">My Bills</a></li>
+
+<li><a href="payment_history.php">Payment History</a></li>
+
+<li><a href="complaint.php">Complaints</a></li>
+
+<li><a href="profile.php">Profile</a></li>
+
+</ul>
+
+</div>
+
+<div class="col-lg-4">
+
+<h5>Customer Care</h5>
+
+<p><i class="bi bi-telephone-fill"></i> 1912</p>
+
+<p><i class="bi bi-envelope-fill"></i> support@apdcl.org</p>
+
+<p>
+<i class="bi bi-geo-alt-fill"></i>
+Bijulee Bhawan, Paltan Bazar,
+Guwahati, Assam
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="text-center">
+
+© <?= date('Y') ?>
+
+APDCL Consumer Portal
+
+|
+
+Internship Demo Project
+
+</div>
+
+</div>
 
 </footer>
 
-</div>
+<button id="topBtn">
 
-<!-- Bootstrap -->
+<i class="bi bi-arrow-up"></i>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</button>
 
 <script>
 
-/*==============================
-    Table Search Highlight
-==============================*/
+const darkBtn=document.getElementById("darkModeToggle");
 
-const searchBox = document.querySelector('input[name="search"]');
+if(darkBtn){
 
-if(searchBox){
+darkBtn.onclick=function(){
 
-searchBox.addEventListener('focus',function(){
+document.body.classList.toggle("dark");
 
-this.classList.add('border-primary');
+localStorage.setItem(
 
-});
+"theme",
 
-searchBox.addEventListener('blur',function(){
+document.body.classList.contains("dark")
 
-this.classList.remove('border-primary');
+?
 
-});
+"dark"
+
+:
+
+"light"
+
+);
+
+};
 
 }
 
-/*==============================
-    Card Animation
-==============================*/
+if(localStorage.getItem("theme")=="dark"){
 
-document.querySelectorAll('.summary-card').forEach(function(card){
+document.body.classList.add("dark");
 
-card.addEventListener('mouseenter',function(){
+}
 
-this.style.transform="translateY(-8px)";
+const topBtn=document.getElementById("topBtn");
+
+window.onscroll=function(){
+
+topBtn.style.display=
+
+window.scrollY>300
+
+?
+
+"block"
+
+:
+
+"none";
+
+};
+
+topBtn.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
 
 });
 
-card.addEventListener('mouseleave',function(){
-
-this.style.transform="translateY(0px)";
-
-});
-
-});
-
-/*==============================
-    Tooltip
-==============================*/
-
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-
-tooltipTriggerList.map(function (tooltipTriggerEl) {
-
-return new bootstrap.Tooltip(tooltipTriggerEl);
-
-});
+};
 
 </script>
 
