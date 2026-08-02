@@ -40,77 +40,65 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 
     // Load latest complaint automatically
 
-    $latest = mysqli_query($conn,"
-    SELECT complaint_id
-    FROM complaint
-    WHERE consumer_no='$consumer_no'
-    ORDER BY id DESC
-    LIMIT 1
-    ");
+$latest = mysqli_query($conn,"
+SELECT id
+FROM complaint
+WHERE consumer_no='$consumer_no'
+ORDER BY id DESC
+LIMIT 1
+");
 
+if(mysqli_num_rows($latest)==0){
 
-    if(mysqli_num_rows($latest)==0){
-
-        die("No complaint found.");
-
-    }
-
-
-    $latestData=mysqli_fetch_assoc($latest);
-
-    $complaint_id=$latestData['complaint_id'];
+    die("No complaint found.");
 
 }
 
+$latestData = mysqli_fetch_assoc($latest);
+
+$complaint_id = $latestData['id'];
+
+}
 
 
 /*=========================================
     FETCH COMPLAINT
 =========================================*/
 
+$complaint_id = (int)$complaint_id;
+
 $stmt = mysqli_prepare($conn,"
 SELECT *
 FROM complaint
-WHERE complaint_id=?
-AND consumer_no=?
+WHERE id=?
 LIMIT 1
 ");
 
-
 if(!$stmt){
-
     die("SQL Error : ".mysqli_error($conn));
-
 }
 
-
-
-mysqli_stmt_bind_param(
-    $stmt,
-    "ss",
-    $complaint_id,
-    $consumer_no
-);
-
-
+mysqli_stmt_bind_param($stmt,"i",$complaint_id);
 
 mysqli_stmt_execute($stmt);
 
-
-
 $result = mysqli_stmt_get_result($stmt);
 
-
+/* Check if complaint exists */
 
 if(mysqli_num_rows($result)==0){
-
-    die("Complaint not found or access denied.");
-
+    die("Complaint not found.");
 }
 
-
+/* Fetch complaint data */
 
 $complaint = mysqli_fetch_assoc($result);
+
+/* Security Check */
+
+if($complaint['consumer_no'] != $consumer_no){
+    die("Access denied.");
+}
 
 /*=========================================
     STATUS BADGE
@@ -621,19 +609,21 @@ value="<?= $complaint['complaint_id'] ?>">
 
 <div class="col-md-4">
 
-<label>Status</label>
+<label class="form-label">Status</label>
 
-<br>
+<div class="mt-2">
 
-
-<span class="badge bg-<?= $badge ?> p-2">
+<span class="badge bg-<?= $badge ?> px-3 py-2">
 
 <?= $complaint['status'] ?>
 
 </span>
 
+</div>
 
 </div>
+
+<div class="col-md-4">
 
 
 
