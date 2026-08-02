@@ -710,28 +710,19 @@ strtotime($complaint['created_at'])
 <td>
 
 
-<a href="view_complaint.php?id=<?= urlencode($complaint['complaint_id']); ?>"
+<a href="view_complaint.php?id=<?= $complaint['id']; ?>"
 class="btn btn-primary btn-sm">
 
-
-<i class="bi bi-eye"></i>
-
-View
-
+    <i class="bi bi-eye"></i>
+    View
 
 </a>
 
-
-
-
-<a href="track_complaint.php?id=<?= urlencode($complaint['complaint_id']); ?>"
+<a href="track_complaint.php?id=<?= $complaint['id']; ?>"
 class="btn btn-info btn-sm text-white">
 
-
-<i class="bi bi-geo-alt"></i>
-
-Track
-
+    <i class="bi bi-geo-alt"></i>
+    Track
 
 </a>
 
